@@ -3,8 +3,10 @@
 
 namespace practicecpp {
 
-	class DynamicArray{
+	class DynamicArray {
 		public:
+			DynamicArray();
+
 			int 	GetSize();
 			int 	GetCapacity();
 			bool 	IsEmpty();
@@ -17,6 +19,10 @@ namespace practicecpp {
 			void 	Remove(int item);
 			int		Find(int item);
 		private:
+			int		size;
+			int 	capacity;
+			int		storage[];
+
 			void 	Resize(int capacity);
 
 	}; /* class DynamicArray */
