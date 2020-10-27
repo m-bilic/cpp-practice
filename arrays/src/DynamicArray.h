@@ -19,8 +19,8 @@ namespace practicecpp {
 			void 	Remove(int item);
 			int		Find(int item);
 		private:
-			int		size;
-			int 	capacity;
+			int		size = 0;
+			int 	capacity = 16;
 			int		storage[];
 
 			void 	Resize(int capacity);

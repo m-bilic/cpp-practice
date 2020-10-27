@@ -4,8 +4,7 @@ namespace practicecpp {
 
 	//constructor
 	DynamicArray::DynamicArray()  {
-		size = 0;
-		capacity = 16;
+
 	}
 
 	int DynamicArray::GetSize() {

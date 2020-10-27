@@ -7,9 +7,11 @@
 //============================================================================
 
 #include <iostream>
+#include "DynamicArray.h"
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	practicecpp::DynamicArray myArray;
+	cout << myArray.GetSize() << endl;
 	return 0;
 }
