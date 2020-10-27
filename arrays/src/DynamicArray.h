@@ -17,11 +17,11 @@ namespace practicecpp {
 			int 	Pop();
 			void 	Delete(int index);
 			void 	Remove(int item);
-			int		Find(int item);
+			int 	Find(int item);
 		private:
-			int		size = 0;
+			int 	size = 0;
 			int 	capacity = 16;
-			int		storage[];
+			int 	storage[];
 
 			void 	Resize(int capacity);
 
