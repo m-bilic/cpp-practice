@@ -7,23 +7,24 @@ namespace practicecpp {
 		public:
 			DynamicArray();
 
-			int 	GetSize();
-			int 	GetCapacity();
-			bool 	IsEmpty();
-			int 	GetByIndex(int index);
-			void 	Push(int item);
-			void 	Insert(int index, int item);
-			void 	Prepend(int item);
-			int 	Pop();
-			void 	Delete(int index);
-			void 	Remove(int item);
-			int 	Find(int item);
+			int 	getSize();
+			int 	getCapacity();
+			bool 	isEmpty();
+			int 	getByIndex(int index);
+			void 	push(int item);
+			void 	insert(int index, int item);
+			void 	prepend(int item);
+			int 	pop();
+			void 	deleteByIndex(int index);
+			void 	remove(int item);
+			int 	find(int item);
+
 		private:
-			int 	size = 0;
-			int 	capacity = 16;
+			int 	size{0};
+			int 	capacity{16};
 			int 	storage[];
 
-			void 	Resize(int capacity);
+			void 	resize(int capacity);
 
 	}; /* class DynamicArray */
 

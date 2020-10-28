@@ -7,52 +7,52 @@ namespace practicecpp {
 
 	}
 
-	int DynamicArray::GetSize() {
+	int DynamicArray::getSize() {
 		return size;
 	}
 
-	int DynamicArray::GetCapacity() {
+	int DynamicArray::getCapacity() {
 		return capacity;
 	}
 
-	bool DynamicArray::IsEmpty() {
+	bool DynamicArray::isEmpty() {
 		if (size == 0)
 			return true;
 		else
 			return false;
 	}
 
-	int DynamicArray::GetByIndex (int index) {
+	int DynamicArray::getByIndex (int index) {
 		return storage[index];
 	}
 
-	void DynamicArray::Push(int item) {
+	void DynamicArray::push(int item) {
 
 	}
 
-	void DynamicArray::Insert(int index, int item) {
+	void DynamicArray::insert(int index, int item) {
 
 	}
 
-	void DynamicArray::Prepend(int item) {
+	void DynamicArray::prepend(int item) {
 
 	}
 
-	int DynamicArray::Pop() {
+	int DynamicArray::pop() {
 		int ret = storage[size - 1];
 		size--;
 		return ret;
 	}
 
-	void DynamicArray::Delete(int index) {
+	void DynamicArray::deleteByIndex(int index) {
 
 	}
 
-	void DynamicArray::Remove(int item) {
+	void DynamicArray::remove(int item) {
 
 	}
 
-	int DynamicArray::Find(int item) {
+	int DynamicArray::find(int item) {
 		for (int i = 0; i++; ) {
 			if (storage[i] == item)
 				return i;
@@ -60,7 +60,7 @@ namespace practicecpp {
 		return -1;
 	}
 
-	void DynamicArray::Resize(int capacity) {
+	void DynamicArray::resize(int capacity) {
 
 	}
 

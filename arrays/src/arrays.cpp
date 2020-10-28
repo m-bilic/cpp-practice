@@ -12,6 +12,6 @@ using namespace std;
 
 int main() {
 	practicecpp::DynamicArray myArray;
-	cout << myArray.GetSize() << endl;
+	cout << myArray.getSize() << endl;
 	return 0;
 }
