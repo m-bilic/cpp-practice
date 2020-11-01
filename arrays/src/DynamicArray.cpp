@@ -1,4 +1,5 @@
 #include "DynamicArray.h"
+#include <iostream>
 
 namespace practicecpp {
 
@@ -20,7 +21,10 @@ namespace practicecpp {
 	}
 
 	int DynamicArray::getByIndex (int index) {
-		//TODO: error handling
+		if (index >= size || index < 0) {
+			std::cout << "ERROR: Index out of bounds!" << std::endl;
+			exit(EXIT_FAILURE);
+		}
 		return arrayData[index];
 	}
 
@@ -31,7 +35,10 @@ namespace practicecpp {
 	}
 
 	void DynamicArray::insert(int index, int item) {
-		//TODO: error handling
+		if (index > size || index < 0) {
+			std::cout << "ERROR: Could not insert element at given index!" << std::endl;
+			return;
+		}
 		assessCapacity();
 		for (int i = size - 1; i <= index; i--) {
 			arrayData[i+1] = arrayData[i];
@@ -45,6 +52,10 @@ namespace practicecpp {
 	}
 
 	int DynamicArray::pop() {
+		if (size < 1) {
+			std::cout << "ERROR: Could not insert element at given index!" << std::endl;
+			exit(EXIT_FAILURE);
+		}
 		int ret = arrayData[size - 1];
 		size--;
 		assessCapacity();
@@ -52,6 +63,10 @@ namespace practicecpp {
 	}
 
 	void DynamicArray::deleteByIndex(int index) {
+		if (index > size || index < 0) {
+			std::cout << "ERROR: Index out of bounds!" << std::endl;
+			return;
+		}
 		for (int i = index; i < size - 1; i++) {
 			arrayData[i] = arrayData[i+1];
 		}
