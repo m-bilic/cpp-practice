@@ -16,40 +16,54 @@ namespace practicecpp {
 	}
 
 	bool DynamicArray::isEmpty() {
-		if (size == 0)
-			return true;
-		else
-			return false;
+		return size == 0;
 	}
 
 	int DynamicArray::getByIndex (int index) {
+		//TODO: error handling
 		return arrayData[index];
 	}
 
 	void DynamicArray::push(int item) {
 		assessCapacity();
+		arrayData[size] = item;
+		size++;
 	}
 
 	void DynamicArray::insert(int index, int item) {
+		//TODO: error handling
 		assessCapacity();
+		for (int i = size - 1; i <= index; i--) {
+			arrayData[i+1] = arrayData[i];
+		}
+		arrayData[index] = item;
+		size++;
 	}
 
 	void DynamicArray::prepend(int item) {
-		assessCapacity();
+		insert(0, item);
 	}
 
 	int DynamicArray::pop() {
 		int ret = arrayData[size - 1];
 		size--;
+		assessCapacity();
 		return ret;
 	}
 
 	void DynamicArray::deleteByIndex(int index) {
+		for (int i = index; i < size - 1; i++) {
+			arrayData[i] = arrayData[i+1];
+		}
+		size--;
 		assessCapacity();
 	}
 
 	void DynamicArray::remove(int item) {
-		assessCapacity();
+		for (int i = 0; i < size; i++) {
+			if (arrayData[i] == item)
+				deleteByIndex(i);
+		}
 	}
 
 	int DynamicArray::find(int item) {
@@ -60,8 +74,9 @@ namespace practicecpp {
 		return -1;
 	}
 
-	void DynamicArray::resize(int capacity) {
-		int newArrayData[] = new int[capacity]();
+	void DynamicArray::resize(int newCapacity) {
+		capacity = newCapacity;
+		std::unique_ptr<int[] > newArrayData(new int[newCapacity]);
 		for (int i = 0; i < size; i++) {
 			newArrayData[i] = arrayData[i];
 		}
