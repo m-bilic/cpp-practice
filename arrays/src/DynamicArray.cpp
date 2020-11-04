@@ -75,7 +75,8 @@ namespace practicecpp {
 	}
 
 	void DynamicArray::remove(int item) {
-		for (int i = 0; i < size; i++) {
+		int curSize = size;
+		for (int i = curSize - 1; i >= 0; i--) {
 			if (arrayData[i] == item)
 				deleteByIndex(i);
 		}
@@ -103,7 +104,8 @@ namespace practicecpp {
 			resize(capacity * defaults::growth_coefficient);
 		}
 
-		if (size * defaults::growth_coefficient * defaults::growth_coefficient <= capacity) {
+		if (size * defaults::growth_coefficient * defaults::growth_coefficient <= capacity
+				&& capacity > defaults::capacity) {
 			resize(capacity / defaults::growth_coefficient);
 		}
 	}

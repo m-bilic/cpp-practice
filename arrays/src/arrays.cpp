@@ -1,18 +1,18 @@
 //============================================================================
 // Name        : arrays.cpp
-// Author      : 
-// Version     :
-// Copyright   :
-// Description : Hello World in C++, Ansi-style
+// Description : Test for the dynamic array implementation.
 //============================================================================
 
 #include <iostream>
 #include "DynamicArray.h"
+#include "DynamicArrayTest.h"
 
 using namespace std;
 
 int main() {
-	practicecpp::DynamicArray myArray;
-	cout << myArray.getSize() << endl;
+	practicecpp::DynamicArrayTest myTest;
+
+	myTest.performTests();
+
 	return 0;
 }
