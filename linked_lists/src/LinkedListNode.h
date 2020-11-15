@@ -11,7 +11,7 @@ namespace practicecpp {
 
 			T getData() {return data;}
 			LinkedListNode<T> *getNext() {return next;}
-			void setData(T &value) {data = value;}
+			void setData(T& value) {data = value;}
 			void setNext(LinkedListNode<T> *nextNode) {next = nextNode;}
 		private:
 			LinkedListNode<T> *next;
