@@ -6,8 +6,7 @@
 namespace practicecpp {
 
 	template <class T>
-
-	class LinkedList{
+	class LinkedList {
 		public:
 			LinkedList() : head(nullptr) {}
 
