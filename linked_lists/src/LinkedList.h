@@ -21,7 +21,7 @@ namespace practicecpp {
 			T getLast();
 			void insert(int index, T value);
 			void erase(int index);
-			void getFromBack(int offset);
+			T getFromBack(int offset);
 			void reverse();
 			void removeValue(T value);
 

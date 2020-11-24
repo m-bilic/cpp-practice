@@ -9,9 +9,9 @@ namespace practicecpp {
 	int LinkedList<T>::getSize() {
 		int size = 0;
 
-		LinkedListNode<T> node = head;
-		while(node != nullptr) {
-			node = node.next();
+		LinkedListNode<T> node = *head;
+		while(node) {
+			node = *node.getNext();
 			size++;
 		}
 
@@ -25,14 +25,14 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::getValueByIndex(int index) {
-		LinkedListNode<T> node = head;
+		LinkedListNode<T> node = *head;
 		int currentIndex = 0;
 
-		while(node != nullptr) {
+		while(node) {
 			if (currentIndex == index) {
 				return node.getData();
 			}
-			node = node.next();
+			node = *node.getNext();
 			currentIndex++;
 		}
 
@@ -42,15 +42,14 @@ namespace practicecpp {
 	template <class T>
 	void LinkedList<T>::pushFront(T value) {
 		LinkedListNode<T> newHead = new LinkedListNode<T>(value);
-		LinkedListNode<T> oldHead = head;
 
-		head = newHead;
-		newHead.setNext(oldHead);
+		newHead.setNext(head);
+		head = &newHead;
 	}
 
 	template <class T>
 	T LinkedList<T>::popFront() {
-		LinkedListNode<T> ret = head;
+		LinkedListNode<T> ret = *head;
 		head = ret.getNext();
 
 		return ret.getData();
@@ -59,10 +58,10 @@ namespace practicecpp {
 	template <class T>
 	void LinkedList<T>::pushBack(T value) {
 		LinkedListNode<T> newNode = new LinkedListNode<T>(value);
-		LinkedListNode<T> node = head;
+		LinkedListNode<T> node = *head;
 
-		while(node.next() != nullptr) {
-			node = node.getNext();
+		while(node.next()) {
+			node = *node.getNext();
 		}
 
 		node.setNext(newNode);
@@ -70,13 +69,13 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::popBack() {
-		LinkedListNode<T> node = head;
+		LinkedListNode<T> node = *head;
 
 		while(node.getNext().getNext() != nullptr) {
-			node = node.getNext();
+			node = *node.getNext();
 		}
 
-		T ret = node.getNext().getData();
+		T ret = node.getNext()->getData();
 
 		node.setNext(nullptr);
 
@@ -90,10 +89,10 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::getLast() {
-		LinkedListNode<T> node = head;
+		LinkedListNode<T> node = *head;
 
-		while(node.getNext() != nullptr) {
-			node = node.getNext();
+		while(node.getNext()) {
+			node = *node.getNext();
 		}
 
 		return node.getData();
@@ -102,36 +101,39 @@ namespace practicecpp {
 	template <class T>
 	void LinkedList<T>::insert(int index, T value) {
 		LinkedListNode<T> newNode = LinkedListNode<T>(value);
-		LinkedListNode<T> node = head;
+		LinkedListNode<T> node = *head;
 		int i = 0;
 
-		while(i < index && node.getNext() != nullptr) {
-			node = node.getNext();
+		while(i < index && node.getNext()) {
+			node = *node.getNext();
 			i++;
 		}
 
-		LinkedListNode<T> oldNext = node.getNext();
+		LinkedListNode<T> oldNext = *node.getNext();
 		node.setNext(newNode);
 		newNode.setNext(oldNext);
 	}
 
 	template <class T>
 	void LinkedList<T>::erase(int index) {
-		LinkedListNode<T> node = head;
+		LinkedListNode<T> node = *head;
 		int currentIndex = 0;
 
-		while(node != nullptr) {
+		while(node) {
 			if (currentIndex == index - 1) {
-				node.setNext(node.getNext().getNext());
+				node.setNext(node.getNext()->getNext());
 			}
-			node = node.next();
+			node = node.getNext();
 			currentIndex++;
 		}
 	}
 
 	template <class T>
-	void LinkedList<T>::getFromBack(int offset) {
-
+	T LinkedList<T>::getFromBack(int offset) {
+		//TODO: better implementation
+		LinkedListNode<T> node = *head;
+		int size = this->getSize();
+		return this->getValueByIndex(size - offset - 1);
 	}
 
 	template <class T>
