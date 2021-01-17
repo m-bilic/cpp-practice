@@ -40,10 +40,10 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::pushFront(T value) {
-		LinkedListNode<T> newHead = new LinkedListNode<T>(value);
+		LinkedListNode<T> *newHead = new LinkedListNode<T>(value);
 
-		newHead.setNext(head);
-		head = &newHead;
+		newHead->setNext(head);
+		head = newHead;
 	}
 
 	template <class T>
@@ -65,7 +65,7 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::pushBack(T value) {
-		LinkedListNode<T> newNode = new LinkedListNode<T>(value);
+		LinkedListNode<T> *newNode = new LinkedListNode<T>(value);
 		LinkedListNode<T> *node = head;
 
 		while(node->getNext()) {
@@ -248,4 +248,3 @@ namespace practicecpp {
 		}
 	}
 }
-

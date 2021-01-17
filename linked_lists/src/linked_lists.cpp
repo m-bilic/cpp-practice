@@ -4,9 +4,14 @@
 //============================================================================
 
 #include <iostream>
+#include "LinkedListTest.h"
+
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	practicecpp::LinkedListTest myTest;
+
+	myTest.performTests();
+
 	return 0;
 }
