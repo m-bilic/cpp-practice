@@ -89,8 +89,16 @@ namespace practicecpp {
 			exit(EXIT_FAILURE);
 		}
 
-		while (node->getNext()->getNext()) {
-			node = node->getNext();
+		if (node->getNext() == nullptr) {
+			T ret = node->getData();
+			head = nullptr;
+			delete node;
+			return ret;
+		}
+		else {
+			while (node->getNext()->getNext()) {
+				node = node->getNext();
+			}
 		}
 
 		T ret = node->getNext()->getData();
