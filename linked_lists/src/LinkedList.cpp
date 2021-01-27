@@ -7,8 +7,8 @@ namespace practicecpp {
 	int LinkedList<T>::getSize() {
 		int size = 0;
 
-		LinkedListNode<T> *node = head;
-		while(node) {
+		LinkedListNode<T>* node = head;
+		while (node) {
 			node = node->getNext();
 			size++;
 		}
@@ -23,10 +23,10 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::getValueByIndex(int index) {
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 		int currentIndex = 0;
 
-		while(node) {
+		while (node) {
 			if (currentIndex == index) {
 				return node->getData();
 			}
@@ -40,7 +40,7 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::pushFront(T value) {
-		LinkedListNode<T> *newHead = new LinkedListNode<T>(value);
+		LinkedListNode<T>* newHead = new LinkedListNode<T>(value);
 
 		newHead->setNext(head);
 		head = newHead;
@@ -54,7 +54,7 @@ namespace practicecpp {
 			exit(EXIT_FAILURE);
 		}
 
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 		head = node->getNext();
 		T ret = node->getData();
 
@@ -65,10 +65,15 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::pushBack(T value) {
-		LinkedListNode<T> *newNode = new LinkedListNode<T>(value);
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* newNode = new LinkedListNode<T>(value);
+		LinkedListNode<T>* node = head;
 
-		while(node->getNext()) {
+		if (node == nullptr) {
+			head = newNode;
+			return;
+		}
+
+		while (node->getNext()) {
 			node = node->getNext();
 		}
 
@@ -77,14 +82,14 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::popBack() {
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 
 		if (head == nullptr) {
 			std::cout << "ERROR: List is empty!" << std::endl;
 			exit(EXIT_FAILURE);
 		}
 
-		while(node->getNext()->getNext()) {
+		while (node->getNext()->getNext()) {
 			node = node->getNext();
 		}
 
@@ -106,14 +111,14 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::getLast() {
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 
 		if (head == nullptr) {
 			std::cout << "ERROR: List is empty!" << std::endl;
 			exit(EXIT_FAILURE);
 		}
 
-		while(node->getNext()) {
+		while (node->getNext()) {
 			node = node->getNext();
 		}
 
@@ -122,7 +127,7 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::insert(int index, T value) {
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 		int i = 0;
 
 		if (head == nullptr) {
@@ -130,20 +135,21 @@ namespace practicecpp {
 			exit(EXIT_FAILURE);
 		}
 
-		while(i < index - 1 && node->getNext() != nullptr) {
+		while (i < index - 1 && node->getNext() != nullptr) {
 			node = node->getNext();
 			i++;
 		}
 
-		LinkedListNode<T> *oldNext = node->getNext();
-		LinkedListNode<T> *newNode = new LinkedListNode<T>(value);
+		LinkedListNode<T>* oldNext = node->getNext();
+		LinkedListNode<T>* newNode = new LinkedListNode<T>(value);
 
-		if(index == 0) {
-			oldNext = head->getNext();
+		if (index == 0) {
+			oldNext = head;
 			head = newNode;
 			newNode->setNext(oldNext);
-		} else {
-			if (i != index) {
+		}
+		else {
+			if (i != index - 1) {
 				std::cout << "ERROR: Index is out of bounds!" << std::endl;
 				exit(EXIT_FAILURE);
 			}
@@ -155,7 +161,7 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::erase(int index) {
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 		int currentIndex = 0;
 
 		if (head == nullptr) {
@@ -163,15 +169,15 @@ namespace practicecpp {
 			return;
 		}
 
-		if(index == 0) {
+		if (index == 0) {
 			head = node->getNext();
 			delete node;
 			return;
 		}
 
-		while(node->getNext()) {
+		while (node->getNext()) {
 			if (currentIndex == index - 1) {
-				LinkedListNode<T> *newNext = node->getNext()->getNext();
+				LinkedListNode<T>* newNext = node->getNext()->getNext();
 				delete node->getNext();
 				node->setNext(newNext);
 				return;
@@ -185,7 +191,7 @@ namespace practicecpp {
 
 	template <class T>
 	T LinkedList<T>::getFromBack(int offset) {
-		LinkedListNode<T> *node = head;
+		LinkedListNode<T>* node = head;
 
 		for (int i = 0; i < offset; i++) {
 			if (node == nullptr) {
@@ -200,7 +206,7 @@ namespace practicecpp {
 			exit(EXIT_FAILURE);
 		}
 
-		LinkedListNode<T> *retNode = head;
+		LinkedListNode<T>* retNode = head;
 		while (node->getNext()) {
 			node = node->getNext();
 			retNode = retNode->getNext();
@@ -211,7 +217,7 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::reverse() {
-		LinkedListNode<T> *tmp, *prev, *next;
+		LinkedListNode<T>* tmp, * prev, * next;
 
 		if (head == nullptr)	return;
 
@@ -230,18 +236,21 @@ namespace practicecpp {
 
 	template <class T>
 	void LinkedList<T>::removeValue(T value) {
-		LinkedListNode<T> *node = head;
-		LinkedListNode<T> *prev = nullptr;
+		LinkedListNode<T>* node = head;
+		LinkedListNode<T>* prev = nullptr;
 
-		while(node) {
+		while (node) {
 			if (node->getData() == value) {
+				LinkedListNode<T>* toRemove = node;
+				node = node->getNext();
 				if (prev == nullptr) {
-					head = node->getNext();
-				} else {
-					prev->setNext(node->getNext());
+					head = toRemove->getNext();
 				}
-				delete node;
-				break;
+				else {
+					prev->setNext(toRemove->getNext());
+				}
+				delete toRemove;
+				continue;
 			}
 			prev = node;
 			node = node->getNext();

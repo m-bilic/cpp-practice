@@ -4,18 +4,18 @@
 namespace practicecpp {
 
 	class LinkedListTest {
-		public:
-			void performTests() const;
-			void testGetSize() const;
-			void testIsEmpty() const;
-			void testGetValueByIndex() const;
-			void testGetFirst() const;
-			void testGetLast() const;
-			void testInsert() const;
-			void testErase() const;
-			void testGetFromBack() const;
-			void testReverse() const;
-			void testRemoveValue() const;
+	public:
+		void performTests() const;
+		void testGetSize() const;
+		void testIsEmpty() const;
+		void testGetValueByIndex() const;
+		void testGetFirst() const;
+		void testGetLast() const;
+		void testInsert() const;
+		void testErase() const;
+		void testGetFromBack() const;
+		void testReverse() const;
+		void testRemoveValue() const;
 	};
 
 }

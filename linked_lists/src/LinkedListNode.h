@@ -6,16 +6,16 @@ namespace practicecpp {
 	template <class T>
 
 	class LinkedListNode {
-		public:
-			LinkedListNode(T& value) : next(nullptr), data(value) {}
+	public:
+		LinkedListNode(T& value) : next(nullptr), data(value) {}
 
-			T getData() {return data;}
-			LinkedListNode<T> *getNext() {return next;}
-			void setData(T& value) {data = value;}
-			void setNext(LinkedListNode<T> *nextNode) {next = nextNode;}
-		private:
-			LinkedListNode<T> *next;
-			T data;
+		T getData() { return data; }
+		LinkedListNode<T>* getNext() { return next; }
+		void setData(T& value) { data = value; }
+		void setNext(LinkedListNode<T>* nextNode) { next = nextNode; }
+	private:
+		LinkedListNode<T>* next;
+		T data;
 	};
 
 }

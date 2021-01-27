@@ -6,19 +6,27 @@
 
 namespace practicecpp {
 	void LinkedListTest::performTests() const {
-		std::cout << "Tests start!";
+		std::cout << "Tests start!\n";
 		testGetSize();
-		std::cout << "GetSize test successful!";
+		std::cout << "GetSize test successful!\n";
 		testIsEmpty();
-		std::cout << "IsEmpty test successful!";
+		std::cout << "IsEmpty test successful!\n";
 		testGetValueByIndex();
+		std::cout << "Get value by index test successful!\n";
 		testGetFirst();
+		std::cout << "Get first test successful!\n";
 		testGetLast();
+		std::cout << "Get last test successful!\n";
 		testInsert();
+		std::cout << "Insert test successful!\n";
 		testErase();
+		std::cout << "Erase test successful!\n";
 		testGetFromBack();
+		std::cout << "Get from back test successful!\n";
 		testReverse();
+		std::cout << "Reverse test successful!\n";
 		testRemoveValue();
+		std::cout << "Remove value test successful!\n";
 	}
 
 	void LinkedListTest::testGetSize() const {
@@ -137,7 +145,7 @@ namespace practicecpp {
 		assert(list.getValueByIndex(0) == 9);
 		assert(list.getSize() == 6);
 		list.insert(2, 10);
-		assert(list.getValueByIndex(0) == 10);
+		assert(list.getValueByIndex(2) == 10);
 		assert(list.getSize() == 7);
 	}
 
@@ -149,11 +157,11 @@ namespace practicecpp {
 		list.pushFront(3);
 		list.pushFront(4);
 		list.erase(2);
-		assert(list.getValueByIndex(2) == 4);
+		assert(list.getValueByIndex(2) == 1);
 		assert(list.getSize() == 3);
 
 		list.erase(0);
-		assert(list.getValueByIndex(0) == 2);
+		assert(list.getValueByIndex(0) == 3);
 		assert(list.getSize() == 2);
 	}
 
